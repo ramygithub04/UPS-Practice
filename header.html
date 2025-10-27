@@ -6,10 +6,51 @@
   <title>ShopEase - Home</title>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  
   <style>
-    /* Smooth transitions */
     html {
       scroll-behavior: smooth;
+    }
+
+    /* Custom Animations */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* Product hover effect */
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      transition: transform 0.4s ease;
+    }
+
+    /* Button hover glow */
+    .glow:hover {
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+      transform: translateY(-2px);
+      transition: 0.3s;
+    }
+
+    /* Footer links hover underline */
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Hero background gradient */
+    .hero-bg {
+      background: linear-gradient(135deg, #c7d2fe 0%, #e0e7ff 100%);
+    }
+
+    /* Smooth product load-in animation */
+    .product-card {
+      animation: fadeInUp 0.7s ease both;
     }
   </style>
 </head>
@@ -19,12 +60,9 @@
   <!-- Header Section -->
   <header class="bg-white shadow-md py-4 sticky top-0 z-50">
     <div class="container mx-auto px-6 flex items-center justify-between">
+      <a href="#" class="text-3xl font-extrabold text-indigo-600">ShopEase</a>
 
-      <!-- Logo -->
-      <a href="#" class="text-2xl font-bold text-indigo-600">ShopEase</a>
-
-      <!-- Navigation Links -->
-      <nav id="nav-menu" class="hidden md:flex space-x-8 text-gray-700">
+      <nav id="nav-menu" class="hidden md:flex space-x-8 text-gray-700 font-medium">
         <a href="#" class="hover:text-indigo-600">Home</a>
         <a href="#" class="hover:text-indigo-600">Shop</a>
         <a href="#" class="hover:text-indigo-600">Deals</a>
@@ -40,19 +78,18 @@
         </button>
       </div>
 
-      <!-- Icons (Cart & Profile) -->
+      <!-- Icons -->
       <div class="flex items-center space-x-6 text-gray-600">
         <a href="#" aria-label="Shopping Cart"><i class="fas fa-shopping-cart text-2xl hover:text-indigo-600"></i></a>
         <a href="#" aria-label="User Account"><i class="fas fa-user text-2xl hover:text-indigo-600"></i></a>
       </div>
 
-      <!-- Mobile Menu Button -->
       <button id="menu-toggle" class="md:hidden text-2xl text-gray-600 focus:outline-none">
         <i class="fas fa-bars"></i>
       </button>
     </div>
 
-    <!-- Mobile Navigation -->
+    <!-- Mobile Nav -->
     <nav id="mobile-menu" class="hidden flex-col bg-white shadow-md md:hidden mt-4 space-y-2 px-6 py-4 text-gray-700">
       <a href="#" class="hover:text-indigo-600">Home</a>
       <a href="#" class="hover:text-indigo-600">Shop</a>
@@ -69,46 +106,45 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-indigo-100 py-20 text-center">
-    <h1 class="text-4xl font-bold text-indigo-700 mb-4">Welcome to ShopEase</h1>
-    <p class="text-gray-700 mb-6">Find the best deals on top-quality products, just for you!</p>
-    <a href="#" class="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition">Shop Now</a>
+  <section class="hero-bg py-20 text-center fade-in-up">
+    <h1 class="text-5xl font-extrabold text-indigo-700 mb-4">Welcome to ShopEase</h1>
+    <p class="text-gray-700 mb-6 text-lg">Discover trendy products at unbeatable prices — all in one place!</p>
+    <a href="#" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 glow transition">Shop Now</a>
   </section>
 
   <!-- Featured Products -->
   <section class="py-16">
     <div class="container mx-auto px-6">
-      <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">Featured Products</h2>
+      <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Featured Products</h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        <!-- Product Card -->
-        <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 text-center">
-          <img src="https://via.placeholder.com/300x200" alt="Smart Watch" class="w-full h-48 object-cover rounded-md">
-          <h3 class="mt-4 text-lg font-semibold text-gray-700">Smart Watch</h3>
+        <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4 text-center product-card">
+          <img src="https://images.unsplash.com/photo-1606813909026-dc7e7c1a96d9?auto=format&fit=crop&w=400&q=80" alt="Smart Watch" class="w-full h-56 object-cover rounded-md">
+          <h3 class="mt-4 text-lg font-semibold text-gray-700">Smart Fitness Watch</h3>
           <p class="text-indigo-600 font-bold mt-2">$129.99</p>
-          <button class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Add to Cart</button>
+          <button class="mt-3 bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 glow">Add to Cart</button>
         </div>
 
-        <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 text-center">
-          <img src="https://via.placeholder.com/300x200" alt="Wireless Earbuds" class="w-full h-48 object-cover rounded-md">
+        <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4 text-center product-card">
+          <img src="https://images.unsplash.com/photo-1583225160328-67c8d94a0b99?auto=format&fit=crop&w=400&q=80" alt="Wireless Earbuds" class="w-full h-56 object-cover rounded-md">
           <h3 class="mt-4 text-lg font-semibold text-gray-700">Wireless Earbuds</h3>
           <p class="text-indigo-600 font-bold mt-2">$59.99</p>
-          <button class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Add to Cart</button>
+          <button class="mt-3 bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 glow">Add to Cart</button>
         </div>
 
-        <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 text-center">
-          <img src="https://via.placeholder.com/300x200" alt="Running Shoes" class="w-full h-48 object-cover rounded-md">
+        <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4 text-center product-card">
+          <img src="https://images.unsplash.com/photo-1528701800489-20be3491a3c9?auto=format&fit=crop&w=400&q=80" alt="Running Shoes" class="w-full h-56 object-cover rounded-md">
           <h3 class="mt-4 text-lg font-semibold text-gray-700">Running Shoes</h3>
           <p class="text-indigo-600 font-bold mt-2">$89.99</p>
-          <button class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Add to Cart</button>
+          <button class="mt-3 bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 glow">Add to Cart</button>
         </div>
 
-        <div class="bg-white rounded-lg shadow hover:shadow-lg transition p-4 text-center">
-          <img src="https://via.placeholder.com/300x200" alt="Leather Backpack" class="w-full h-48 object-cover rounded-md">
+        <div class="bg-white rounded-lg shadow hover:shadow-xl transition p-4 text-center product-card">
+          <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=80" alt="Leather Backpack" class="w-full h-56 object-cover rounded-md">
           <h3 class="mt-4 text-lg font-semibold text-gray-700">Leather Backpack</h3>
           <p class="text-indigo-600 font-bold mt-2">$149.99</p>
-          <button class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Add to Cart</button>
+          <button class="mt-3 bg-indigo-600 text-white px-5 py-2 rounded hover:bg-indigo-700 glow">Add to Cart</button>
         </div>
 
       </div>
@@ -116,55 +152,50 @@
   </section>
 
   <!-- Newsletter Section -->
-  <section class="bg-indigo-50 py-12 text-center">
+  <section class="bg-indigo-50 py-12 text-center fade-in-up">
     <h2 class="text-2xl font-bold text-gray-800 mb-4">Stay Updated</h2>
     <p class="text-gray-600 mb-6">Subscribe to our newsletter for exclusive deals and updates.</p>
     <form class="flex justify-center">
       <input type="email" placeholder="Enter your email" class="px-4 py-2 border border-gray-300 rounded-l-lg outline-none w-64" required>
-      <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-700">Subscribe</button>
+      <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-700 glow">Subscribe</button>
     </form>
   </section>
 
-  <!-- Footer Section -->
-  <footer class="bg-gray-800 text-white py-8 mt-12">
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12 mt-12">
     <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-
       <div>
         <h3 class="text-lg font-bold mb-3">ShopEase</h3>
-        <p class="text-gray-300 text-sm">Your trusted online store for quality products at the best prices.</p>
+        <p class="text-gray-400 text-sm">Your trusted online store for quality products at the best prices.</p>
       </div>
-
       <div>
         <h3 class="text-lg font-bold mb-3">Quick Links</h3>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li><a href="#" class="hover:text-white">About Us</a></li>
-          <li><a href="#" class="hover:text-white">FAQ</a></li>
-          <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
-          <li><a href="#" class="hover:text-white">Contact</a></li>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
       </div>
-
       <div>
         <h3 class="text-lg font-bold mb-3">Follow Us</h3>
-        <div class="flex space-x-4 text-gray-300 text-xl">
+        <div class="flex space-x-4 text-gray-400 text-xl">
           <a href="#" class="hover:text-white"><i class="fab fa-facebook"></i></a>
           <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
           <a href="#" class="hover:text-white"><i class="fab fa-instagram"></i></a>
           <a href="#" class="hover:text-white"><i class="fab fa-linkedin"></i></a>
         </div>
       </div>
-
     </div>
-    <div class="text-center text-gray-400 text-sm mt-8">
+    <div class="text-center text-gray-500 text-sm mt-8">
       &copy; 2025 ShopEase. All Rights Reserved.
     </div>
   </footer>
 
-  <!-- JavaScript for Mobile Menu -->
+  <!-- JS for Mobile Menu -->
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
-
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
@@ -172,3 +203,4 @@
 
 </body>
 </html>
+
